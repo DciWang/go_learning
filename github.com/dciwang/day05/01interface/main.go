@@ -15,7 +15,14 @@ type person struct {
 }
 
 /*定义接口，里面写需要实现的方法*/
-type speak interface {
+/*
+   type 接口类型名 interface{
+       方法名1( 参数列表1 ) 返回值列表1
+       方法名2( 参数列表2 ) 返回值列表2
+       …
+   }
+*/
+type speaker interface {
 	speak()
 }
 
@@ -29,7 +36,7 @@ func (c cat) speak() {
 	fmt.Println("喵喵喵")
 }
 
-func da(x speak) {
+func da(x speaker) {
 	//传进来一个参数，接收到的是什么我就打什么
 	x.speak()
 }
@@ -41,7 +48,7 @@ func main() {
 	da(wdc)
 	da(wangcai)
 	da(kafei)
-	var ss speak
+	var ss speaker
 	ss = wdc //类似多态
 	ss.speak()
 	ss = wangcai //类似多态
